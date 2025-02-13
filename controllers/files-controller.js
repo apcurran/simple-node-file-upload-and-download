@@ -6,6 +6,13 @@ async function postUploadFile(req, res, next) {
     res.end();
 }
 
+/** @type {import("express").RequestHandler} */
+async function getDownloadFile(req, res, next) {
+    console.log("Downloading file...");
+    res.end();
+}
+
 module.exports = {
     postUploadFile,
+    getDownloadFile,
 };
