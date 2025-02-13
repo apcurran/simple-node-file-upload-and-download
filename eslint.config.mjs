@@ -21,6 +21,7 @@ export default [
             "@stylistic/quotes": ["error", "double"],
             "@stylistic/brace-style": "error",
             "@stylistic/comma-dangle": ["error", "always-multiline"],
+            "@stylistic/eol-last": ["error", "always"],
         },
     },
     pluginJs.configs.recommended,
