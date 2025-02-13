@@ -5,7 +5,7 @@ import stylistic from "@stylistic/eslint-plugin";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
     {
-        files: ["**/*.js",], languageOptions: { sourceType: "commonjs", },
+        files: ["**/*.js"], languageOptions: { sourceType: "commonjs" },
     },
     {
         languageOptions: {
@@ -15,12 +15,12 @@ export default [
             "@stylistic": stylistic,
         },
         rules: {
-            "@stylistic/indent": ["error", 4,],
+            "@stylistic/indent": ["error", 4],
             "@stylistic/semi": "error",
-            "@stylistic/arrow-parens": ["error", "always",],
-            "@stylistic/quotes": ["error", "double",],
+            "@stylistic/arrow-parens": ["error", "always"],
+            "@stylistic/quotes": ["error", "double"],
             "@stylistic/brace-style": "error",
-            "@stylistic/comma-dangle": ["error", "always",],
+            "@stylistic/comma-dangle": ["error", "always-multiline"],
         },
     },
     pluginJs.configs.recommended,
