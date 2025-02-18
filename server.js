@@ -12,5 +12,5 @@ const PORT = 5000;
 app.use("/api", filesRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}.`);    
+    console.log(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode.`);    
 });
