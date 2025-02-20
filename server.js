@@ -13,6 +13,9 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
+// middleware for JSON parsing of incoming req bodies
+app.use(express.json());
+
 // enable API router
 app.use("/api", filesRouter);
 
