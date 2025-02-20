@@ -2,8 +2,19 @@
 
 /** @type {import("express").RequestHandler} */
 async function postUploadFile(req, res, next) {
-    console.log("Upload file here");
-    res.end();
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "No file chosen from form." });
+        }
+    
+        res.status(201).json({
+            message: "New file uploaded.",
+            filename: req.file.filename,
+        });
+        
+    } catch (err) {
+        next(err);
+    }
 }
 
 /** @type {import("express").RequestHandler} */
