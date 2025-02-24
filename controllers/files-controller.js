@@ -1,10 +1,15 @@
 "use strict";
 
+const path = require("path");
+const fs = require("node:fs/promises");
+
 /** @type {import("express").RequestHandler} */
 async function getUploadedFiles(req, res, next) {
     try {
-        console.log("Getting all files...");
-        res.end();
+        const uploadDirPath = path.join(__dirname, "..", "file-uploads");
+        const allFiles = await fs.readdir(uploadDirPath);
+        
+        res.status(200).json({ filenames: allFiles });
         
     } catch (err) {
         next(err);
