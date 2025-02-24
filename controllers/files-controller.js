@@ -1,6 +1,17 @@
 "use strict";
 
 /** @type {import("express").RequestHandler} */
+async function getUploadedFiles(req, res, next) {
+    try {
+        console.log("Getting all files...");
+        res.end();
+        
+    } catch (err) {
+        next(err);
+    }    
+}
+
+/** @type {import("express").RequestHandler} */
 async function postUploadFile(req, res, next) {
     try {
         if (!req.file) {
@@ -24,6 +35,7 @@ async function getDownloadFile(req, res, next) {
 }
 
 module.exports = {
+    getUploadedFiles,
     postUploadFile,
     getDownloadFile,
 };
