@@ -37,6 +37,7 @@ async function postUploadFile(req, res, next) {
 async function getDownloadFile(req, res, next) {
     const { filename } = req.params;
     const pathToFile = path.join(__dirname, "..", "file-uploads", filename);
+    // TODO: add real-time monitoring of download progress and use human-readable filesizes (pretty-bytes or filesize libraries)
 
     res.status(200).download(pathToFile, filename, function (err) {
         if (err) {
@@ -44,6 +45,30 @@ async function getDownloadFile(req, res, next) {
         }
     });
 }
+
+// const { pipeline } = require("node:stream/promises");
+// const standardFs = require("node:fs");
+// /**
+//  * @type {import("express").RequestHandler}
+//  * Alternative function with Streams API instead of using the Express res.download() helper method
+//  */
+// async function getDownloadFile(req, res, next) {
+//     const { filename } = req.params;
+//     const pathToFile = path.join(__dirname, "..", "file-uploads", filename);
+    
+//     try {
+//         // trigger download as file
+//         res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+//         res.setHeader("Content-Type", "application/octet-stream");
+
+//         await pipeline(standardFs.createReadStream(pathToFile), res);
+
+//     } catch (err) {
+//         console.error("Pipeline error:", err.message);
+
+//         next(err);
+//     }
+// }
 
 module.exports = {
     getUploadedFiles,
