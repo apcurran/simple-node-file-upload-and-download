@@ -57,8 +57,12 @@ async function getDownloadFile(req, res, next) {
 //     const pathToFile = path.join(__dirname, "..", "file-uploads", filename);
     
 //     try {
+//         const fileStats = await fs.stat(pathToFile);
+//         // send filesize in response header
+//         res.setHeader("Content-Length", fileStats.size);
 //         // trigger download as file
 //         res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+//         // generic file
 //         res.setHeader("Content-Type", "application/octet-stream");
 
 //         await pipeline(standardFs.createReadStream(pathToFile), res);
