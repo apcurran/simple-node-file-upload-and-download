@@ -17,7 +17,7 @@ app.use("/api", filesRouter);
 const myFilename = "1740435848669-my-test-doc.txt";
 
 describe("GET /api/files", () => {
-    it("respond with a JSON list of all uploaded files in the file-uploads dir", (done) => {
+    it("respond with a JSON list of all uploaded files in the file-uploads dir", () => {
         request(app)
             .get("/api/files")
             .set("Accept", "application/json")
@@ -30,7 +30,7 @@ describe("GET /api/files", () => {
 });
 
 describe("POST /api/files", () => {
-    it("uploads a file to the server", (done) => {
+    it("uploads a file to the server", () => {
         request(app)
             .post("/api/files")
             .field("firstName", "Bob") // fake a name
@@ -40,7 +40,7 @@ describe("POST /api/files", () => {
 });
 
 describe("GET /api/files/:filename", () => {
-    it("respond with a download of selected file", (done) => {
+    it("respond with a download of selected file", () => {
         request(app)
             .get(`/api/files/${myFilename}`)
             .expect(200)
