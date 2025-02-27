@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/api", filesRouter);
 
 describe("Files routes integration tests", () => {
-    it("GET /api/files -- should return a list of all uploaded files in the file-uploads dir", () => {
+    it("GET /api/files -- should return a JSON list of all uploaded files in the file-uploads dir", () => {
         
     });
 });
