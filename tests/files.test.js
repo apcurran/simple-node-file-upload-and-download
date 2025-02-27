@@ -14,6 +14,8 @@ app.use(express.json());
 // router middleware
 app.use("/api", filesRouter);
 
+const myFilename = "1740435848669-my-test-doc.txt";
+
 describe("GET /api/files", () => {
     it("respond with a JSON list of all uploaded files in the file-uploads dir", (done) => {
         request(app)
@@ -27,21 +29,22 @@ describe("GET /api/files", () => {
     });
 });
 
-// describe("POST /api/files", () => {
-//     it("uploads a file to the server", (done) => {
-//         request(app)
-//             .post("/api/files");
-//     });
-// });
+describe("POST /api/files", () => {
+    it("uploads a file to the server", (done) => {
+        request(app)
+            .post("/api/files")
+            .field("firstName", "Bob") // fake a name
+            .attach(myFilename, `./fixtures/${myFilename}`) // simulate file upload
+            .expect(201);
+    });
+});
 
 describe("GET /api/files/:filename", () => {
     it("respond with a download of selected file", (done) => {
-        const filename = "1740435848669-my-test-doc.txt";
-
         request(app)
-            .get(`/api/files/${filename}`)
+            .get(`/api/files/${myFilename}`)
             .expect(200)
-            .expect("Content-Disposition", `attachment; filename="${filename}"`)
+            .expect("Content-Disposition", `attachment; filename="${myFilename}"`)
             .expect("Content-Type", /octet-stream/)
         ;
     });
