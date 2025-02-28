@@ -26,6 +26,7 @@ async function postUploadFile(req, res, next) {
         res.status(201).json({
             message: "New file uploaded.",
             filename: req.file.filename,
+            filesize: `${req.file.size} bytes`,
         });
 
     } catch (err) {
